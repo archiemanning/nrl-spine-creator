@@ -1,1 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>NRL Spine Draft</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+}
+
+nav{
+background:#181818;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #333;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.menu{
+display:flex;
+gap:20px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+.hero{
+background:#1b1b1b;
+padding:30px;
+border-radius:15px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+button{
+background:#22c55e;
+border:none;
+padding:15px 25px;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.teamCard{
+background:#1b1b1b;
+padding:30px;
+border-radius:15px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.teamName{
+font-size:32px;
+font-weight:bold;
+margin-top:15px;
+}
+
+.spineGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.slot{
+background:#1b1b1b;
+padding:25px;
+border-radius:15px;
+}
+
+.slot h3{
+margin-bottom:10px;
+}
+
+.ratingBox{
+background:#1b1b1b;
+padding:25px;
+border-radius:15px;
+margin-top:20px;
+text-align:center;
+}
+
+.score{
+font-size:50px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.grade{
+font-size:40px;
+color:#22c55e;
+margin-top:10px;
+}
+
+@media(max-width:700px){
+
+.spineGrid{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:28px;
+}
+
+.teamName{
+font-size:24px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+🏉 NRL Spine Draft
+</div>
+
+<div class="menu">
+<a href="#">Home</a>
+<a href="#">Draft</a>
+<a href="#">Daily</a>
+<a href="#">VS</a>
+</div>
+
+</nav>
+
+<div class="container">
+
+<div class="hero">
+
+<h1>NRL Spine Draft 2026</h1>
+
+<p style="margin-bottom:20px;">
+Build the best spine possible.
+</p>
+
+<button onclick="randomTeam()">
+🎲 Random Team
+</button>
+
+</div>
+
+<div class="teamCard">
+
+<h2>Current Team</h2>
+
+<div class="teamName" id="team">
+Press Random Team
+</div>
+
+</div>
+
+<div class="spineGrid">
+
+<div class="slot">
+<h3>1 - Fullback</h3>
+<p id="fb">Empty</p>
+</div>
+
+<div class="slot">
+<h3>6 - Five-Eighth</h3>
+<p id="fe">Empty</p>
+</div>
+
+<div class="slot">
+<h3>7 - Halfback</h3>
+<p id="hb">Empty</p>
+</div>
+
+<div class="slot">
+<h3>9 - Hooker</h3>
+<p id="hk">Empty</p>
+</div>
+
+</div>
+
+<div class="ratingBox">
+
+<h2>Spine Rating</h2>
+
+<div class="score" id="score">
+0
+</div>
+
+<div class="grade" id="grade">
+F-
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const teams = [
+"Broncos",
+"Raiders",
+"Bulldogs",
+"Sharks",
+"Dolphins",
+"Titans",
+"Sea Eagles",
+"Storm",
+"Knights",
+"Cowboys",
+"Eels",
+"Panthers",
+"Rabbitohs",
+"Dragons",
+"Roosters",
+"Warriors",
+"Wests Tigers"
+];
+
+function randomTeam(){
+
+const random =
+teams[Math.floor(Math.random()*teams.length)];
+
+document.getElementById("team").innerHTML = random;
+
+}
+
+</script>
+
+</body>
+</html>
