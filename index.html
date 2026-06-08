@@ -221,8 +221,10 @@ const teams = [
 
 function randomTeam(){
 
-  const team =
+  currentTeam =
   teams[Math.floor(Math.random()*teams.length)];
+
+  const team = currentTeam;
 
   document.getElementById("team").innerText = team;
 
