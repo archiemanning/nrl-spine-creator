@@ -255,25 +255,29 @@ function randomTeam(){
 
 function selectPlayer(position){
 
+  if(!players[currentTeam]){
+    alert("No players added for " + currentTeam);
+    return;
+  }
+
+  const player = players[currentTeam][position][0];
+
   if(position === "FB"){
-    document.getElementById("fb").innerText = "Selected";
+    document.getElementById("fb").innerText = player;
   }
 
   if(position === "FE"){
-    document.getElementById("fe").innerText = "Selected";
+    document.getElementById("fe").innerText = player;
   }
 
   if(position === "HB"){
-    document.getElementById("hb").innerText = "Selected";
+    document.getElementById("hb").innerText = player;
   }
 
   if(position === "HK"){
-    document.getElementById("hk").innerText = "Selected";
+    document.getElementById("hk").innerText = player;
   }
 
-  document.getElementById("modal").style.display = "none";
-
-}function closeModal(){
   document.getElementById("modal").style.display = "none";
 }
 </script>
