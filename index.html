@@ -195,12 +195,36 @@ Press Random Team
 
 
 
+  
+const teams = [
+"Broncos",
+"Bulldogs",
+"Raiders",
+"Sharks",
+"Dolphins",
+"Titans",
+"Sea Eagles",
+"Storm",
+"Knights",
+"Cowboys",
+"Eels",
+"Panthers",
+"Rabbitohs",
+"Dragons",
+"Roosters",
+"Warriors",
+"Wests Tigers"
+];
+
+function randomTeam(){
+
   const team =
   teams[Math.floor(Math.random()*teams.length)];
 
   document.getElementById("team").innerText = team;
 
   document.getElementById("modal").style.display = "flex";
+
 }
 
 function selectPlayer(position){
@@ -222,8 +246,8 @@ function selectPlayer(position){
   }
 
   document.getElementById("modal").style.display = "none";
-}
 
+}
 </script>
 </body>
 </html>
