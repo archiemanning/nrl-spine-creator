@@ -261,6 +261,88 @@ document.getElementById("team").innerHTML = random;
 }
 
 </script>
+<!-- PLAYER MODAL -->
+<div id="playerModal" class="modal">
+  <div class="modal-content">
+    <h2 id="modalTeam">Choose a Player</h2>
 
+    <button class="player-btn">
+      James Tedesco (93) - FB
+    </button>
+
+    <button class="player-btn">
+      Sam Walker (89) - HB
+    </button>
+
+    <button class="player-btn">
+      Connor Watson (85) - HK
+    </button>
+
+    <button class="close-btn" onclick="closeModal()">
+      Close
+    </button>
+  </div>
+</div>
+
+<style>
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.modal-content{
+background:#1b1b1b;
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:500px;
+}
+
+.player-btn{
+display:block;
+width:100%;
+margin-top:12px;
+background:#2a2a2a;
+color:white;
+padding:15px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.close-btn{
+margin-top:15px;
+background:#dc2626;
+width:100%;
+}
+
+</style>
+
+<script>
+
+const oldRandomTeam = randomTeam;
+
+randomTeam = function(){
+
+oldRandomTeam();
+
+document.getElementById("playerModal").style.display="flex";
+
+}
+
+function closeModal(){
+document.getElementById("playerModal").style.display="none";
+}
+
+</script>
 </body>
 </html>
