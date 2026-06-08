@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NRL Spine Draft</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
@@ -22,7 +20,7 @@ color:white;
 
 nav{
 background:#181818;
-padding:20px;
+padding:18px;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -39,9 +37,12 @@ display:flex;
 gap:20px;
 }
 
-.menu a{
+.menu button{
+background:none;
+border:none;
 color:white;
-text-decoration:none;
+cursor:pointer;
+font-size:16px;
 }
 
 .container{
@@ -50,48 +51,30 @@ margin:auto;
 padding:20px;
 }
 
-.hero{
+.card{
 background:#1b1b1b;
-padding:30px;
+padding:25px;
 border-radius:15px;
-text-align:center;
 margin-bottom:20px;
 }
 
-.hero h1{
-font-size:40px;
-margin-bottom:10px;
-}
-
-button{
+.big-btn{
 background:#22c55e;
 border:none;
 padding:15px 25px;
 border-radius:10px;
 font-size:18px;
+font-weight:bold;
 cursor:pointer;
-font-weight:bold;
 }
 
-button:hover{
-opacity:.9;
-}
-
-.teamCard{
-background:#1b1b1b;
-padding:30px;
-border-radius:15px;
-text-align:center;
-margin-bottom:20px;
-}
-
-.teamName{
-font-size:32px;
-font-weight:bold;
+.team{
+font-size:30px;
 margin-top:15px;
+font-weight:bold;
 }
 
-.spineGrid{
+.spine{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
@@ -99,142 +82,120 @@ gap:15px;
 
 .slot{
 background:#1b1b1b;
-padding:25px;
+padding:20px;
 border-radius:15px;
 }
 
-.slot h3{
-margin-bottom:10px;
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
 }
 
-.ratingBox{
+.modal-box{
 background:#1b1b1b;
 padding:25px;
 border-radius:15px;
-margin-top:20px;
-text-align:center;
+width:90%;
+max-width:500px;
 }
 
-.score{
-font-size:50px;
-font-weight:bold;
+.player-btn{
+width:100%;
 margin-top:10px;
-}
-
-.grade{
-font-size:40px;
-color:#22c55e;
-margin-top:10px;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#2a2a2a;
+color:white;
+cursor:pointer;
 }
 
 @media(max-width:700px){
-
-.spineGrid{
+.spine{
 grid-template-columns:1fr;
 }
-
-.hero h1{
-font-size:28px;
 }
-
-.teamName{
-font-size:24px;
-}
-
-}
-
 </style>
 </head>
-
 <body>
 
 <nav>
-
-<div class="logo">
-🏉 NRL Spine Draft
-</div>
+<div class="logo">🏉 NRL Spine Draft</div>
 
 <div class="menu">
-<a href="#">Home</a>
-<a href="#">Draft</a>
-<a href="#">Daily</a>
-<a href="#">VS</a>
+<button>Home</button>
+<button>Draft</button>
+<button>Daily</button>
+<button>VS</button>
 </div>
-
 </nav>
 
 <div class="container">
 
-<div class="hero">
-
+<div class="card">
 <h1>NRL Spine Draft 2026</h1>
-
-<p style="margin-bottom:20px;">
-Build the best spine possible.
-</p>
-
-<button onclick="randomTeam()">
+<br>
+<button class="big-btn" onclick="randomTeam()">
 🎲 Random Team
 </button>
 
-</div>
-
-<div class="teamCard">
-
-<h2>Current Team</h2>
-
-<div class="teamName" id="team">
+<div class="team" id="team">
 Press Random Team
 </div>
-
 </div>
 
-<div class="spineGrid">
+<div class="spine">
 
 <div class="slot">
-<h3>1 - Fullback</h3>
+<h3>Fullback</h3>
 <p id="fb">Empty</p>
 </div>
 
 <div class="slot">
-<h3>6 - Five-Eighth</h3>
+<h3>Five-Eighth</h3>
 <p id="fe">Empty</p>
 </div>
 
 <div class="slot">
-<h3>7 - Halfback</h3>
+<h3>Halfback</h3>
 <p id="hb">Empty</p>
 </div>
 
 <div class="slot">
-<h3>9 - Hooker</h3>
+<h3>Hooker</h3>
 <p id="hk">Empty</p>
 </div>
 
 </div>
 
-<div class="ratingBox">
-
-<h2>Spine Rating</h2>
-
-<div class="score" id="score">
-0
 </div>
 
-<div class="grade" id="grade">
-F-
-</div>
+<div class="modal" id="modal">
+<div class="modal-box">
+
+<h2 id="modalTitle">Choose Player</h2>
+
+<button class="player-btn">Player 1</button>
+<button class="player-btn">Player 2</button>
+<button class="player-btn">Player 3</button>
+<button class="player-btn">Player 4</button>
 
 </div>
-
 </div>
 
 <script>
 
 const teams = [
 "Broncos",
-"Raiders",
 "Bulldogs",
+"Raiders",
 "Sharks",
 "Dolphins",
 "Titans",
@@ -253,96 +214,15 @@ const teams = [
 
 function randomTeam(){
 
-const random =
+const team =
 teams[Math.floor(Math.random()*teams.length)];
 
-document.getElementById("team").innerHTML = random;
+document.getElementById("team").innerText = team;
 
+document.getElementById("modal").style.display = "flex";
 }
 
 </script>
-<!-- PLAYER MODAL -->
-<div id="playerModal" class="modal">
-  <div class="modal-content">
-    <h2 id="modalTeam">Choose a Player</h2>
 
-    <button class="player-btn">
-      James Tedesco (93) - FB
-    </button>
-
-    <button class="player-btn">
-      Sam Walker (89) - HB
-    </button>
-
-    <button class="player-btn">
-      Connor Watson (85) - HK
-    </button>
-
-    <button class="close-btn" onclick="closeModal()">
-      Close
-    </button>
-  </div>
-</div>
-
-<style>
-
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.85);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-
-.modal-content{
-background:#1b1b1b;
-padding:30px;
-border-radius:20px;
-width:90%;
-max-width:500px;
-}
-
-.player-btn{
-display:block;
-width:100%;
-margin-top:12px;
-background:#2a2a2a;
-color:white;
-padding:15px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-}
-
-.close-btn{
-margin-top:15px;
-background:#dc2626;
-width:100%;
-}
-
-</style>
-
-<script>
-
-const oldRandomTeam = randomTeam;
-
-randomTeam = function(){
-
-oldRandomTeam();
-
-document.getElementById("playerModal").style.display="flex";
-
-}
-
-function closeModal(){
-document.getElementById("playerModal").style.display="none";
-}
-
-</script>
 </body>
 </html>
