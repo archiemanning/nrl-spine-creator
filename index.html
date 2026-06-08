@@ -264,7 +264,38 @@ Storm: [
 ]
 
 };
-function randomTeam(){function selectPlayer(position){
+function randomTeam(){
+
+  const team =
+  teams[Math.floor(Math.random()*teams.length)];
+
+  document.getElementById("team").innerText = team;
+
+  document.getElementById("modal").style.display = "flex";
+
+}
+
+function selectPlayer(position){
+
+  if(position === "FB"){
+    document.getElementById("fb").innerText = "Selected";
+  }
+
+  if(position === "FE"){
+    document.getElementById("fe").innerText = "Selected";
+  }
+
+  if(position === "HB"){
+    document.getElementById("hb").innerText = "Selected";
+  }
+
+  if(position === "HK"){
+    document.getElementById("hk").innerText = "Selected";
+  }
+
+  document.getElementById("modal").style.display = "none";
+
+}
 
   if(position === "FB"){
     document.getElementById("fb").innerText = "Selected";
