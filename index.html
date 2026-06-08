@@ -180,7 +180,10 @@ Press Random Team
 <div class="modal" id="modal">
 <div class="modal-box">
 
-<h2 id="modalTitle">Choose Player</h2>
+<div style="display:flex;justify-content:space-between;align-items:center;">
+  <h2 id="modalTitle">Choose Position</h2>
+  <button onclick="closeModal()" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;">✖</button>
+</div>
 
 <button class="player-btn" onclick="selectPlayer('FB')">Fullback</button>
 <button class="player-btn" onclick="selectPlayer('FE')">Five-Eighth</button>
